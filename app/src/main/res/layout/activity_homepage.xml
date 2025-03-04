@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <!-- Box Container with layout_weight to push bottom bar down -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- First Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/b1"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@android:color/holo_orange_dark"
+                android:text="Box 1"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/b2"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@android:color/holo_orange_dark"
+                android:text="Box 2"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/b3"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@android:color/holo_orange_dark"
+                android:text="Box 3"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:padding="10dp"/>
+        </LinearLayout>
+
+        <!-- Second Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/b4"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@android:color/holo_orange_dark"
+                android:text="Box 4"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/b5"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@android:color/holo_orange_dark"
+                android:text="Box 5"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/b6"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@android:color/holo_orange_dark"
+                android:text="Box 6"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:padding="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Bottom Navigation Bar (Now Stays at the Bottom) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/darker_gray"
+        android:padding="10dp"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Option 1"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_orange_dark"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Option 2"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_orange_dark"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Option 3"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_orange_dark"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+
+</LinearLayout>
