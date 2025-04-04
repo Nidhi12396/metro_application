@@ -31,31 +31,73 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
+    <!-- Station Details (Above QR) -->
+    <TextView
+        android:id="@+id/stationDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:text="From → To"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/passengerDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- Date (Dynamically Updated) -->
+    <TextView
+        android:id="@+id/dateDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"/>
+
     <!-- QR Code Display -->
     <ImageView
         android:id="@+id/generatedQrImage"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="10dp"/>
 
-    <!-- Ticket Details -->
+    <!-- Ticket Status (Below QR) -->
     <TextView
-        android:id="@+id/ticketDetails"
+        android:id="@+id/ticketStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Ticket Generated Successfully"
         android:padding="10dp"/>
 
-    <!-- Expiry Time -->
-    <TextView
-        android:id="@+id/timeLeft"
+    <!-- Countdown Timer Box -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@android:color/holo_red_dark"
-        android:textStyle="bold"/>
+        android:padding="12dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/timeLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:text="Loading..." />
+    </LinearLayout>
 
     <!-- Close Button -->
     <Button

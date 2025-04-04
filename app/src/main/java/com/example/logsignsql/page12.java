@@ -3,6 +3,7 @@ package com.example.logsignsql;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,11 +26,13 @@ public class page12 extends AppCompatActivity {
 
     private static final String TAG = "Page12";
     private static final int QR_SIZE = 500;
+    private static final long VALIDITY_PERIOD = 2 * 60 * 60 * 1000; // 2 Hours in milliseconds
 
     private ImageView generatedQrImage;
-    private TextView ticketDetails, timeLeft;
+    private TextView stationDetails, passengerDetails, ticketStatus, timeLeft;
     private Bitmap qrBitmap;
     private Button closePopupBtn;
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,9 @@ public class page12 extends AppCompatActivity {
 
         // Initialize UI components
         generatedQrImage = findViewById(R.id.generatedQrImage);
-        ticketDetails = findViewById(R.id.ticketDetails);
+        stationDetails = findViewById(R.id.stationDetails);
+        passengerDetails = findViewById(R.id.passengerDetails);
+        ticketStatus = findViewById(R.id.ticketStatus);
         timeLeft = findViewById(R.id.timeLeft);
         closePopupBtn = findViewById(R.id.closePopupBtn);
 
@@ -63,19 +68,28 @@ public class page12 extends AppCompatActivity {
         // Generate QR Code
         generateQrCode(qrData);
 
-        // Display ticket details
-        ticketDetails.setText(
-                "Passengers: " + passengerCount + "\n" +
-                        "From: " + fromStation + "\n" +
-                        "To: " + toStation + "\n" +
-                        "Date: " + getCurrentDate()
-        );
+        // Set station details (Above QR)
+        stationDetails.setText(fromStation + " → " + toStation);
 
-        // Set expiration time
-        timeLeft.setText("Valid for: 2 hours");
+        // Get current date dynamically
+        String currentDate = getCurrentDate();
+
+        // Set Passenger Count & Date dynamically (VERTICAL FORMAT)
+        passengerDetails.setText("Passengers: " + passengerCount + "\nDate: " + currentDate);
+
+        // Set ticket status (Below QR)
+        ticketStatus.setText("Ticket Generated Successfully");
+
+        // Start countdown timer
+        startCountdownTimer();
 
         // Close button action
-        closePopupBtn.setOnClickListener(view -> finish());
+        closePopupBtn.setOnClickListener(view -> {
+            if (countDownTimer != null) {
+                countDownTimer.cancel(); // Stop timer when closing
+            }
+            finish();
+        });
     }
 
     private void generateQrCode(String qrData) {
@@ -87,6 +101,44 @@ public class page12 extends AppCompatActivity {
         } catch (WriterException e) {
             Log.e(TAG, "QR Generation Failed: " + e.getMessage());
         }
+    }
+
+    private void startCountdownTimer() {
+        if (timeLeft == null) {
+            Log.e(TAG, "TextView timeLeft is NULL! Check XML id.");
+            return;
+        }
+
+        countDownTimer = new CountDownTimer(VALIDITY_PERIOD, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long hours = (millisUntilFinished / (1000 * 60 * 60)) % 24;
+                long minutes = (millisUntilFinished / (1000 * 60)) % 60;
+                long seconds = (millisUntilFinished / 1000) % 60;
+
+                String timeText = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
+
+                runOnUiThread(() -> {
+                    if (timeLeft != null) {
+                        timeLeft.setText(timeText);
+                        timeLeft.setBackgroundColor(getResources().getColor(R.color.white));
+                    }
+                });
+
+                Log.d(TAG, "Countdown: " + timeText);
+            }
+
+            @Override
+            public void onFinish() {
+                runOnUiThread(() -> {
+                    timeLeft.setText("Expired");
+                    finish(); // Close activity when time runs out
+                });
+            }
+        };
+
+        countDownTimer.start();
+        Log.d(TAG, "Countdown Timer Started");
     }
 
     private String getCurrentDate() {
@@ -108,5 +160,13 @@ public class page12 extends AppCompatActivity {
             Log.e(TAG, "getUriFromBitmap: " + e.getMessage());
         }
         return null;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countDownTimer != null) {
+            countDownTimer.cancel(); // Stop timer when activity is destroyed
+        }
     }
 }
