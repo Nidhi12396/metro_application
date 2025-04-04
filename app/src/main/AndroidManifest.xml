@@ -16,19 +16,13 @@
         android:theme="@style/Theme.Logsignsql"
         tools:targetApi="31">
         <activity
-            android:name=".ticketadapter"
-            android:exported="false" />
-        <activity
-            android:name=".ticket"
+            android:name=".page12"
             android:exported="false" />
         <activity
             android:name=".page51"
             android:exported="false" />
         <activity
             android:name=".page13"
-            android:exported="false" />
-        <activity
-            android:name=".page12"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".page12" -->
         <!-- android:exported="false" /> -->

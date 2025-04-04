@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import android.util.Log;
 
 public class page11 extends AppCompatActivity {
 
@@ -40,9 +41,17 @@ public class page11 extends AppCompatActivity {
         textPassengers.setText("Passengers: " + passengerCount);
         textPrice.setText("Total Price: ₹" + ticketPrice);
 
-        // Next Page Button (Go to Payment or Confirmation)
+        // Next Page Button (Go to Page12 and Pass Data)
         btnNextPage.setOnClickListener(v -> {
-            Intent intent = new Intent(page11.this, page12.class); // Change to your next activity
+            Log.d("DEBUG", "Button clicked, starting page12");
+
+            Intent intent = new Intent(page11.this, page12.class);
+            intent.putExtra("fromStation", fromStation);
+            intent.putExtra("toStation", toStation);
+            intent.putExtra("passengerCount", passengerCount);
+            intent.putExtra("ticketPrice", ticketPrice);
+            intent.putExtra("userEmail", userEmail);
+
             startActivity(intent);
         });
     }
