@@ -3,36 +3,47 @@ package com.example.logsignsql;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class page11 extends AppCompatActivity {
+
+    private TextView textFrom, textTo, textPassengers, textPrice, textEmail;
+    private ImageView imageLogo;
+    private Button btnNextPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page11);
 
-        // Retrieve data from previous page
-        Intent intent = getIntent();
-        String from = intent.getStringExtra("from");
-        String to = intent.getStringExtra("to");
-        int quantity = intent.getIntExtra("quantity", 1);
+        textEmail = findViewById(R.id.textEmail);
+        textFrom = findViewById(R.id.textFrom);
+        textTo = findViewById(R.id.textTo);
+        textPassengers = findViewById(R.id.textPassengers);
+        textPrice = findViewById(R.id.textPrice);
+        imageLogo = findViewById(R.id.imageLogo);
+        btnNextPage = findViewById(R.id.btnNextPage);
 
-        // Set data in TextViews
-        TextView textFrom = findViewById(R.id.textFrom);
-        TextView textTo = findViewById(R.id.textTo);
-        TextView textQuantity = findViewById(R.id.textQuantity);
+        // Get data from Intent
+        String fromStation = getIntent().getStringExtra("fromStation");
+        String toStation = getIntent().getStringExtra("toStation");
+        int passengerCount = getIntent().getIntExtra("passengerCount", 1);
+        int ticketPrice = getIntent().getIntExtra("ticketPrice", 0);
+        String userEmail = getIntent().getStringExtra("userEmail");
 
-        textFrom.setText("From: " + from);
-        textTo.setText("To: " + to);
-        textQuantity.setText("Quantity: " + quantity);
+        // Set ticket details
+        textEmail.setText("Email: " + userEmail);
+        textFrom.setText("From: " + fromStation);
+        textTo.setText("To: " + toStation);
+        textPassengers.setText("Passengers: " + passengerCount);
+        textPrice.setText("Total Price: ₹" + ticketPrice);
 
-        // Next Button Click
-//        Button btnNextPage = findViewById(R.id.btnNextPage);
-//        btnNextPage.setOnClickListener(v -> {
-//            Intent nextIntent = new Intent(page11.this, page12.class);
-//            startActivity(nextIntent);
-//        });
+        // Next Page Button (Go to Payment or Confirmation)
+        btnNextPage.setOnClickListener(v -> {
+            Intent intent = new Intent(page11.this, page12.class); // Change to your next activity
+            startActivity(intent);
+        });
     }
 }

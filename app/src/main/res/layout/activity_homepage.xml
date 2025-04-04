@@ -7,7 +7,29 @@
     android:background="@android:color/white"
     android:padding="16dp">
 
-    <!-- Box Container with layout_weight to push bottom bar down -->
+    <!-- Top Section with Logo and App Name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/metrologo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ahmedabad Metro"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingStart="10dp"/>
+    </LinearLayout>
+
+    <!-- Box Container -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,8 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="10dp">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/b1"
@@ -29,7 +50,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@android:color/holo_orange_dark"
-                android:text="Box 1"
+                android:text="Booking"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:layout_margin="5dp"
@@ -42,20 +63,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@android:color/holo_orange_dark"
-                android:text="Box 2"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:layout_margin="5dp"
-                android:padding="10dp"/>
-
-            <TextView
-                android:id="@+id/b3"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:background="@android:color/holo_orange_dark"
-                android:text="Box 3"
+                android:text="Map"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:layout_margin="5dp"
@@ -67,8 +75,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="10dp">
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/b3"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@android:color/holo_orange_dark"
+                android:text="Time Table"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:padding="10dp"/>
 
             <TextView
                 android:id="@+id/b4"
@@ -77,11 +97,19 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@android:color/holo_orange_dark"
-                android:text="Box 4"
+                android:text="View Ticket"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:layout_margin="5dp"
                 android:padding="10dp"/>
+        </LinearLayout>
+
+        <!-- Third Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/b5"
@@ -90,7 +118,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@android:color/holo_orange_dark"
-                android:text="Box 5"
+                android:text="Fare Inquiry"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:layout_margin="5dp"
@@ -103,21 +131,20 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@android:color/holo_orange_dark"
-                android:text="Box 6"
+                android:text="Check Route"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:layout_margin="5dp"
                 android:padding="10dp"/>
         </LinearLayout>
-
     </LinearLayout>
 
-    <!-- Bottom Navigation Bar (Now Stays at the Bottom) -->
+    <!-- Bottom Navigation Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/white"
         android:padding="10dp"
         android:gravity="center">
 
@@ -125,28 +152,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Option 1"
+            android:text="Home"
             android:textColor="@android:color/white"
-            android:background="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/light_orange"
             android:layout_margin="5dp"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Option 2"
+            android:text="Booking"
             android:textColor="@android:color/white"
-            android:background="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/light_orange"
             android:layout_margin="5dp"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Option 3"
+            android:text="View Ticket"
             android:textColor="@android:color/white"
-            android:background="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/light_orange"
             android:layout_margin="5dp"/>
     </LinearLayout>
-
 </LinearLayout>

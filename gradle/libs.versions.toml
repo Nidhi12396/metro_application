@@ -6,6 +6,9 @@ espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.1"
+qrGenerator = "4.3.0"
+googleScanner = "16.1.0"
+playServices = "18.6.0"
 constraintlayout = "2.2.1"
 
 [libraries]
@@ -16,6 +19,12 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+qr-generator = { group = "com.journeyapps", name = "zxing-android-embedded", version.ref = "qrGenerator" }
+
+google-scanner = { group = "com.google.android.gms", name = "play-services-code-scanner", version.ref = "googleScanner" }
+
+play-services = { group = "com.google.android.gms", name = "play-services-base", version.ref = "playServices" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
