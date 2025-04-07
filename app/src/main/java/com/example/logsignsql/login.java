@@ -35,7 +35,7 @@ public class login extends AppCompatActivity {
 
                     if(checkCredentials == true){
                         Toast.makeText(login.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                        Intent intent  = new Intent(getApplicationContext(), homepage.class);
+                        Intent intent  = new Intent(getApplicationContext(), localization.class);
                         startActivity(intent);
                     }else{
                         Toast.makeText(login.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
@@ -43,6 +43,8 @@ public class login extends AppCompatActivity {
                 }
             }
         });
+
+
 
         binding.signupRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override

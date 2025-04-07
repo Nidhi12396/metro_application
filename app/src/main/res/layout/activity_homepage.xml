@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
     android:padding="16dp">
 
-    <!-- Top Section with Logo and App Name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#FF6F00"
+
+    android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Dashboard"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/profile"
+    android:contentDescription="Profile Icon"/>
+</LinearLayout>
+
+
+    <!-- Top Header Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +45,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/metrologo" />
+            android:src="@drawable/metrologo"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,113 +56,195 @@
             android:paddingStart="10dp"/>
     </LinearLayout>
 
-    <!-- Box Container -->
+    <!-- Feature Buttons Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <!-- First Row -->
+        <!-- Rows of Features -->
+        <!-- Row 1 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/b1"
+            <LinearLayout
+                android:id="@+id/booking"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:background="@android:color/holo_orange_dark"
-                android:text="Booking"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:background="@color/light_orange"
                 android:layout_margin="5dp"
-                android:padding="10dp"/>
+                android:padding="5dp">
 
-            <TextView
-                android:id="@+id/b2"
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/booking" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Booking"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:paddingTop="5dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/map"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:background="@android:color/holo_orange_dark"
-                android:text="Map"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:background="@color/light_orange"
                 android:layout_margin="5dp"
-                android:padding="10dp"/>
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/map" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Map"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:paddingTop="5dp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-        <!-- Second Row -->
+        <!-- Row 2 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/b3"
+            <LinearLayout
+                android:id="@+id/timetable"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:background="@android:color/holo_orange_dark"
-                android:text="Time Table"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:background="@color/light_orange"
                 android:layout_margin="5dp"
-                android:padding="10dp"/>
+                android:padding="5dp">
 
-            <TextView
-                android:id="@+id/b4"
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/timetable" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time Table"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:paddingTop="5dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/viewticket"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:background="@android:color/holo_orange_dark"
-                android:text="View Ticket"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:background="@color/light_orange"
                 android:layout_margin="5dp"
-                android:padding="10dp"/>
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/tt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Ticket"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:paddingTop="5dp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-        <!-- Third Row -->
+        <!-- Row 3 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/b5"
+            <LinearLayout
+                android:id="@+id/fareinquiry"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:background="@android:color/holo_orange_dark"
-                android:text="Fare Inquiry"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:background="@color/light_orange"
                 android:layout_margin="5dp"
-                android:padding="10dp"/>
+                android:padding="5dp">
 
-            <TextView
-                android:id="@+id/b6"
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/fare" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fare Inquiry"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:paddingTop="5dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/checkroute"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:background="@android:color/holo_orange_dark"
-                android:text="Check Route"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:background="@color/light_orange"
                 android:layout_margin="5dp"
-                android:padding="10dp"/>
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ckeck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check Route"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:paddingTop="5dp"/>
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
@@ -144,11 +253,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@android:color/white"
-        android:padding="10dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="10dp">
 
         <Button
+            android:id="@+id/home_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -158,6 +267,7 @@
             android:layout_margin="5dp"/>
 
         <Button
+            android:id="@+id/booking_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -167,6 +277,7 @@
             android:layout_margin="5dp"/>
 
         <Button
+            android:id="@+id/view_ticket_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -175,4 +286,5 @@
             android:backgroundTint="@color/light_orange"
             android:layout_margin="5dp"/>
     </LinearLayout>
+
 </LinearLayout>

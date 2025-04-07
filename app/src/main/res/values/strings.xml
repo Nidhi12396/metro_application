@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">logsignsql</string>
+
+    <string name="app_name">Ahmedabad Metro</string>
+    <string name="welcome">Welcome to Ahmedabad Metro</string>
 </resources>
+
+
+

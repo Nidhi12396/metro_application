@@ -17,6 +17,6 @@ public class page3 extends AppCompatActivity {
         myImageView = findViewById(R.id.myImageView);
 
         // Set an image programmatically
-        myImageView.setImageResource(R.drawable.tt);
+        myImageView.setImageResource(R.drawable.timetable);
     }
 }
