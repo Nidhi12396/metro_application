@@ -1,32 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:gravity="center"
+    android:padding="16dp"
     android:background="@android:color/white">
 
-
-    <!-- Button to Generate QR Code -->
-    <Button
-        android:id="@+id/generateQrBtn"
+    <!-- Header -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Generate QR Code"
-        android:padding="12dp"
-        android:backgroundTint="@color/light_orange"
-        android:textColor="@android:color/white"
+        android:orientation="horizontal"
+        android:background="@color/light_orange"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:contentDescription="Back Button"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book Ticket"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- Station Details (Above QR) -->
+    <TextView
+        android:id="@+id/stationDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:text="From → To"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/passengerDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- Date (Dynamically Updated) -->
+    <TextView
+        android:id="@+id/dateDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:gravity="center"
         android:layout_marginBottom="10dp"/>
 
-    <!-- ImageView to Display Generated QR Code -->
+    <!-- QR Code Display -->
     <ImageView
         android:id="@+id/generatedQrImage"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:scaleType="fitCenter"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginTop="10dp"/>
 
+    <!-- Ticket Status (Below QR) -->
+    <TextView
+        android:id="@+id/ticketStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Ticket Generated Successfully"
+        android:padding="10dp"/>
 
+    <!-- Countdown Timer Box -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="center">
 
+        <TextView
+            android:id="@+id/timeLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:text="Loading..." />
+    </LinearLayout>
+
+    <!-- Close Button -->
+    <Button
+        android:id="@+id/closePopupBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:backgroundTint="@color/light_orange"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"/>
 </LinearLayout>
