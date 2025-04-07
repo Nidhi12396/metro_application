@@ -36,7 +36,7 @@ public class page51 extends AppCompatActivity {
         // Next Button (Replace or Modify to Go to Next Page)
         btnNext.setOnClickListener(v -> {
             // Example: Just reload this activity
-            Intent nextIntent = new Intent(page51.this, page51.class);
+            Intent nextIntent = new Intent(page51.this, homepage.class);
             startActivity(nextIntent);
         });
 

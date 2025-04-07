@@ -35,14 +35,14 @@
                     android:padding="8dp"/>
 
                 <EditText
-                    android:id="@+id/login_password"
-                    android:layout_width="350dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="20dp"
-                    android:drawablePadding="8dp"
-                    android:hint="Password"
+                    android:id="@+id/loginPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Password"
                     android:inputType="textPassword"
-                    android:padding="8dp" />
+                    android:drawableEnd="@drawable/pass"
+                    android:paddingEnd="12dp" />
+
 
                 <Button
                     android:id="@+id/login_button"

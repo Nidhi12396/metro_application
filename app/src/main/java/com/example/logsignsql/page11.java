@@ -12,7 +12,7 @@ public class page11 extends AppCompatActivity {
 
     private TextView textFrom, textTo, textPassengers, textPrice, textEmail;
     private ImageView imageLogo, backArrow;
-    private Button btnNextPage;
+    private Button btnNextPage, btnPayment; // Added btnPayment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,8 @@ public class page11 extends AppCompatActivity {
         textPrice = findViewById(R.id.textPrice);
         imageLogo = findViewById(R.id.imageLogo);
         btnNextPage = findViewById(R.id.btnNextPage);
-        backArrow = findViewById(R.id.backArrow); // Make sure you have this in your XML layout
+        backArrow = findViewById(R.id.backArrow);
+        btnPayment = findViewById(R.id.btnPayment); // initialize the button
 
         // Get data from Intent
         String fromStation = getIntent().getStringExtra("fromStation");
@@ -42,9 +43,9 @@ public class page11 extends AppCompatActivity {
         textPassengers.setText("Passengers: " + passengerCount);
         textPrice.setText("Total Price: ₹" + ticketPrice);
 
-        // Next Page Button (Go to Page12 and Pass Data)
+        // Next Page Button (QR Payment Page)
         btnNextPage.setOnClickListener(v -> {
-            Log.d("DEBUG", "Button clicked, starting page12");
+            Log.d("DEBUG", "QR Payment clicked, starting page12");
 
             Intent intent = new Intent(page11.this, page12.class);
             intent.putExtra("fromStation", fromStation);
@@ -54,6 +55,16 @@ public class page11 extends AppCompatActivity {
             intent.putExtra("userEmail", userEmail);
 
             startActivity(intent);
+        });
+
+        // Google Pay Payment Page
+        btnPayment.setOnClickListener(v -> {
+            Log.d("DEBUG", "Google Pay clicked, starting page13");
+
+            Intent intent = new Intent(page11.this, page13.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
         });
 
         // Back arrow functionality

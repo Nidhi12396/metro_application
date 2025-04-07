@@ -27,5 +27,5 @@ google-scanner = { group = "com.google.android.gms", name = "play-services-code-
 play-services = { group = "com.google.android.gms", name = "play-services-base", version.ref = "playServices" }
 
 [plugins]
-android-application = { id = "com.android.application", version = "8.7.3" }
+android-application = { id = "com.android.application", version = "8.8.0" }
 

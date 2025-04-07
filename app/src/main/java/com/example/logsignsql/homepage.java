@@ -1,9 +1,11 @@
 package com.example.logsignsql;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +14,7 @@ public class homepage extends AppCompatActivity {
     Button bookingBtn;
     Button viewTicketBtn;
     Button homeBtn;
+    ImageView profileIcon;   // Added ImageView for profile icon
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,22 @@ public class homepage extends AppCompatActivity {
         bookingBtn = findViewById(R.id.booking_button);
         viewTicketBtn = findViewById(R.id.view_ticket_button);
         homeBtn = findViewById(R.id.home_button);
+        profileIcon = findViewById(R.id.profile_icon);  // Initialize ImageView
+
+        // Get email from Intent
+        String userEmail = getIntent().getStringExtra("email");
+
+        // Profile Icon Click Listener to show email
+        profileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(homepage.this);
+                builder.setTitle("User Email");
+                builder.setMessage("Email: " + userEmail);
+                builder.setPositiveButton("OK", null);
+                builder.show();
+            }
+        });
 
         // Row 1
         LinearLayout booking = findViewById(R.id.booking);
@@ -54,18 +73,17 @@ public class homepage extends AppCompatActivity {
         viewTicketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPage(page4.class); // Assuming page4 is for view ticket
+                openPage(page4.class);
             }
         });
 
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPage(homepage.class); // Reload homepage
+                openPage(homepage.class);
             }
         });
     }
-
 
     private void openPage(Class<?> activityClass) {
         Intent intent = new Intent(homepage.this, activityClass);

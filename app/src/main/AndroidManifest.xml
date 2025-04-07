@@ -16,13 +16,13 @@
         android:theme="@style/Theme.Logsignsql"
         tools:targetApi="31">
         <activity
+            android:name=".page13"
+            android:exported="false" />
+        <activity
             android:name=".page51"
             android:exported="false" />
         <activity
             android:name=".localization"
-            android:exported="false" />
-        <activity
-            android:name=".page13"
             android:exported="false" />
         <activity
             android:name=".page12"
