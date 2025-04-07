@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,15 @@ public class page1 extends AppCompatActivity {
         btnIncreasePassenger = findViewById(R.id.btnIncreasePassenger);
         btnDecreasePassenger = findViewById(R.id.btnDecreasePassenger);
 
+        // Handle back arrow click
+        ImageView backArrow = findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Go back to previous activity
+            }
+        });
+
         initializeStations();
 
         // Setup spinner adapters
@@ -54,7 +64,7 @@ public class page1 extends AppCompatActivity {
 
         // Increase passenger count
         btnIncreasePassenger.setOnClickListener(v -> {
-            if (passengerCount < 10) { // Set a max limit (change as needed)
+            if (passengerCount < 10) {
                 passengerCount++;
                 updateUserInfo();
             }
@@ -62,7 +72,7 @@ public class page1 extends AppCompatActivity {
 
         // Decrease passenger count
         btnDecreasePassenger.setOnClickListener(v -> {
-            if (passengerCount > 1) { // Minimum should be 1
+            if (passengerCount > 1) {
                 passengerCount--;
                 updateUserInfo();
             }
@@ -73,16 +83,13 @@ public class page1 extends AppCompatActivity {
             String fromStation = fromSpinner.getSelectedItem().toString();
             String toStation = toSpinner.getSelectedItem().toString();
 
-            // Calculate the number of stations between from and to
             int fromIndex = stationMap.get(fromStation);
             int toIndex = stationMap.get(toStation);
             int stationCount = Math.abs(toIndex - fromIndex);
-            int price = stationCount * 5 * passengerCount; // ₹5 per station per passenger
+            int price = stationCount * 5 * passengerCount;
 
-            // Fetch user email from login page
             String userEmail = getIntent().getStringExtra("userEmail");
 
-            // Start Ticket Page (page12)
             Intent intent = new Intent(page1.this, page11.class);
             intent.putExtra("fromStation", fromStation);
             intent.putExtra("toStation", toStation);
@@ -91,29 +98,6 @@ public class page1 extends AppCompatActivity {
             intent.putExtra("userEmail", userEmail);
             startActivity(intent);
         });
-
-//        btnNextPage.setOnClickListener(v -> {
-//            String fromStation = fromSpinner.getSelectedItem().toString();
-//            String toStation = toSpinner.getSelectedItem().toString();
-//            int fromIndex = stationMap.get(fromStation);
-//            int toIndex = stationMap.get(toStation);
-//            int stationCount = Math.abs(toIndex - fromIndex);
-//            int price = stationCount * 5 * passengerCount; // ₹5 per station per passenger
-//            String userEmail = getIntent().getStringExtra("userEmail"); // Fetch user email
-//
-//            // Create Ticket Object
-//            Ticket ticket = new Ticket(userEmail, fromStation, toStation, price, System.currentTimeMillis());
-//
-//            // Send Ticket Object to Next Activity
-//            Intent intent = new Intent(page1.this, page4.class);
-//            intent.putExtra("ticket", ticket);  // Pass Ticket
-//            startActivity(intent);
-//        });
-
-
-
-
-
     }
 
     private void initializeStations() {
@@ -125,7 +109,7 @@ public class page1 extends AppCompatActivity {
         stationMap.put("Amraivadi", 5);
         stationMap.put("Apparel Park", 6);
         stationMap.put("Kankariya East", 7);
-        // Add more stations here...
+        // Add more stations if needed
     }
 
     private void updateUserInfo() {
@@ -135,7 +119,7 @@ public class page1 extends AppCompatActivity {
         if (!startStation.equals(endStation)) {
             textFrom.setText("From: " + startStation);
             textTo.setText("To: " + endStation);
-            textQuantity.setText(String.valueOf(passengerCount)); // Update passenger count display
+            textQuantity.setText(String.valueOf(passengerCount));
         } else {
             textFrom.setText("Select different stations");
             textTo.setText("");

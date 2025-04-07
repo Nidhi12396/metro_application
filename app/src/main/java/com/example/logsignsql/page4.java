@@ -1,11 +1,16 @@
 package com.example.logsignsql;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +20,7 @@ public class page4 extends AppCompatActivity {
     private RecyclerView recyclerViewTickets;
     private TicketAdapter ticketAdapter;
     private List<Ticket> allTickets, activeTickets, pastTickets;
+    private ImageView backArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,18 @@ public class page4 extends AppCompatActivity {
         btnActiveList = findViewById(R.id.btnActiveList);
         btnPastList = findViewById(R.id.btnPastList);
         recyclerViewTickets = findViewById(R.id.recyclerViewTickets);
+        backArrow = findViewById(R.id.backArrow);
+
+        // Set back arrow functionality
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(page4.this, homepage.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish(); // optional: closes current activity
+            }
+        });
 
         // Load ticket data
         allTickets = fetchTickets();

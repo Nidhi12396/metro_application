@@ -6,8 +6,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,7 @@ public class page5 extends AppCompatActivity {
 
     private Spinner fromSpinner, toSpinner;
     private Button btnCheckFare;
+    private ImageView backArrow;
     private List<String> stationList;
 
     @Override
@@ -25,6 +29,7 @@ public class page5 extends AppCompatActivity {
         fromSpinner = findViewById(R.id.fromSpinner);
         toSpinner = findViewById(R.id.toSpinner);
         btnCheckFare = findViewById(R.id.btnCheckFare);
+        backArrow = findViewById(R.id.backArrow);
 
         initializeStations();
 
@@ -32,6 +37,14 @@ public class page5 extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, stationList);
         fromSpinner.setAdapter(adapter);
         toSpinner.setAdapter(adapter);
+
+        // Back arrow click
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(page5.this, homepage.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        });
 
         btnCheckFare.setOnClickListener(v -> {
             String fromStation = fromSpinner.getSelectedItem().toString();

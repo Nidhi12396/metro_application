@@ -6,9 +6,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
 
-public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder> {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketViewHolder> {
+
     private List<Ticket> ticketList;
 
     public TicketAdapter(List<Ticket> ticketList) {
@@ -17,14 +22,21 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
-        return new ViewHolder(view);
+    public TicketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_ticket, parent, false);
+        return new TicketViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(ticketList.get(position).getDescription());
+    public void onBindViewHolder(@NonNull TicketViewHolder holder, int position) {
+        Ticket ticket = ticketList.get(position);
+        holder.textDescription.setText(ticket.getDescription());
+
+        // Format timestamp to readable date/time
+        String timeString = new SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.getDefault())
+                .format(new Date(ticket.getTimestamp()));
+        holder.textTime.setText("Booked on: " + timeString);
     }
 
     @Override
@@ -32,18 +44,18 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         return ticketList.size();
     }
 
-    // Function to update the list dynamically
-    public void updateList(List<Ticket> newList) {
-        this.ticketList = newList;
+    public void updateList(List<Ticket> newTickets) {
+        this.ticketList = newTickets;
         notifyDataSetChanged();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+    static class TicketViewHolder extends RecyclerView.ViewHolder {
+        TextView textDescription, textTime;
 
-        public ViewHolder(@NonNull View itemView) {
+        public TicketViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(android.R.id.text1);
+            textDescription = itemView.findViewById(R.id.textDescription);
+            textTime = itemView.findViewById(R.id.textTime);
         }
     }
 }

@@ -1,5 +1,4 @@
 package com.example.logsignsql;
-
 public class Ticket {
     private String description;
     private long timestamp;

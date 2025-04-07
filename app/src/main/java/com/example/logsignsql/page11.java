@@ -2,16 +2,16 @@ package com.example.logsignsql;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
 
 public class page11 extends AppCompatActivity {
 
     private TextView textFrom, textTo, textPassengers, textPrice, textEmail;
-    private ImageView imageLogo;
+    private ImageView imageLogo, backArrow;
     private Button btnNextPage;
 
     @Override
@@ -26,6 +26,7 @@ public class page11 extends AppCompatActivity {
         textPrice = findViewById(R.id.textPrice);
         imageLogo = findViewById(R.id.imageLogo);
         btnNextPage = findViewById(R.id.btnNextPage);
+        backArrow = findViewById(R.id.backArrow); // Make sure you have this in your XML layout
 
         // Get data from Intent
         String fromStation = getIntent().getStringExtra("fromStation");
@@ -53,6 +54,14 @@ public class page11 extends AppCompatActivity {
             intent.putExtra("userEmail", userEmail);
 
             startActivity(intent);
+        });
+
+        // Back arrow functionality
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(page11.this, page1.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
         });
     }
 }

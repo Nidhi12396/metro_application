@@ -5,86 +5,130 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:gravity="center_horizontal">
 
-    <!-- Dropdown for 'From' Station -->
-    <TextView
-        android:id="@+id/textFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="From:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="4dp"/>
-
-    <Spinner
-        android:id="@+id/fromSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:background="@android:drawable/btn_default"/>
-
-    <!-- Dropdown for 'To' Station -->
-    <TextView
-        android:id="@+id/textTo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"/>
-
-    <Spinner
-        android:id="@+id/toSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:background="@android:drawable/btn_default"/>
-
+    <!-- Header with Back Arrow and Title -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/light_orange"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:contentDescription="Back Button"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book Ticket"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- Dropdowns Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/textFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/fromSpinner"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:background="@android:drawable/btn_default"/>
+
+        <TextView
+            android:id="@+id/textTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/toSpinner"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:background="@android:drawable/btn_default"/>
+    </LinearLayout>
+
+    <!-- Passenger Count Section -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="40dp">
 
         <Button
             android:id="@+id/btnDecreasePassenger"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="65dp"
+            android:layout_height="60dp"
             android:backgroundTint="@color/dark_orange"
-            android:text="-" />
+            android:text="-"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:elevation="4dp"
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:id="@+id/textPassengerCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textColor="@android:color/black"/>
 
         <Button
             android:id="@+id/btnIncreasePassenger"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="65dp"
+            android:layout_height="60dp"
             android:backgroundTint="@color/dark_orange"
-            android:text="+" />
+            android:text="+"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:elevation="4dp"/>
 
     </LinearLayout>
 
 
-    <!-- Button to Confirm Booking -->
+    <!-- Book Button -->
     <Button
         android:id="@+id/btnNextPage"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="Book"
         android:backgroundTint="@color/light_orange"
         android:textColor="@android:color/white"
-        android:layout_marginTop="20dp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

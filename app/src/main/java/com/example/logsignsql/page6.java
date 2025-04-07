@@ -1,14 +1,19 @@
 package com.example.logsignsql;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class page6 extends AppCompatActivity {
+
     private ScrollView scrollViewTwoImages, scrollViewSixImages;
     private Button btnShowTwoImages, btnShowSixImages;
+    private ImageView backArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,7 @@ public class page6 extends AppCompatActivity {
         btnShowSixImages = findViewById(R.id.btnShowSixImages);
         scrollViewTwoImages = findViewById(R.id.scrollView);
         scrollViewSixImages = findViewById(R.id.scrollViewSixImages);
+        backArrow = findViewById(R.id.backArrow);
 
         btnShowTwoImages.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +40,14 @@ public class page6 extends AppCompatActivity {
                 scrollViewTwoImages.setVisibility(View.GONE);
                 scrollViewSixImages.setVisibility(View.VISIBLE);
             }
+        });
+
+        // Handle back arrow click
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(page6.this, homepage.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
         });
     }
 }
