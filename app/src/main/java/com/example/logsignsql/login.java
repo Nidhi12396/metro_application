@@ -66,7 +66,7 @@ public class login extends AppCompatActivity {
                     if(checkCredentials == true) {
                         Toast.makeText(login.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
 
-                        Intent intent  = new Intent(getApplicationContext(), homepage.class);
+                        Intent intent  = new Intent(getApplicationContext(), localization.class);
                         intent.putExtra("email", email);
                         startActivity(intent);
                     } else {
